@@ -1,0 +1,28 @@
+print("Olá seja bem vindo!")
+nome = input("Digite seu nome: ")
+print("Olá", nome)
+
+ano_nasc = int(input("Digite seu ano de nascimento: "))
+idade = 2024 - ano_nasc
+
+if idade >= 18:
+    print("Você é maior de idade. Vamos continuar...")
+
+    escolaridade = input("Nos diga qual o nivel da sua escolaridade, se é ensino médio completo ou ensino superior completo: ")
+
+    if escolaridade.lower() == "ensino médio completo":
+        print("""
+        Parabéns por concluir o ensino médio! Aqui estão algumas opções de cursos superiores para você considerar:
+        - Engenharia de Software
+        - Ciência da Computação
+        - Medicina
+        """)
+    elif escolaridade.lower() == "ensino superior completo":
+        print("""
+        Parabéns por concluir o ensino superior! Aqui estão algumas opções de cursos de pós-graduação para você considerar:
+        - Mestrado em Inteligência Artificial
+        - Doutorado em Ciência da Computação
+        - MBA em Administração de Empresas
+        """)
+else:
+    print("Você é menor de idade, não poderemos continuar. Peço que espere atingir a fase adulta.")
