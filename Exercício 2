@@ -1,0 +1,25 @@
+import math
+
+def calcular_area(forma, *args):
+    if forma == "circulo":
+        raio, = args
+        return math.pi * raio ** 2
+    elif forma == "retangulo":
+        largura, altura = args
+        return largura * altura
+    elif forma == "triangulo":
+        base, altura = args
+        return (base * altura) / 2
+    else:
+        return "Forma desconhecida"
+
+# Exemplos de uso da função
+raio = 5
+largura = 4
+altura_retangulo = 6
+base_triangulo = 3
+altura_triangulo = 4
+
+print(f"Área do círculo: {calcular_area('circulo', raio):.2f}")
+print(f"Área do retângulo: {calcular_area('retangulo', largura, altura_retangulo):.2f}")
+print(f"Área do triângulo: {calcular_area('triangulo', base_triangulo, altura_triangulo):.2f}")
