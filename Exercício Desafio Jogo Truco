@@ -1,0 +1,32 @@
+import random
+
+# Valores das cartas do truco
+VALORES = {f"{v} de {n}": i+1 for i, v in enumerate(['4', '5', '6', '7', 'Q', 'J', 'K', 'A', '2', '3']) for n in ['ouros', 'espadas', 'copas', 'paus']}
+MANILHAS = {'4 de paus': 11, '7 de copas': 12, 'A de espadas': 13, '7 de ouros': 14}
+VALORES.update(MANILHAS)
+
+# Função para criar, embaralhar o baralho e distribuir cartas
+def preparar_jogo():
+    baralho = list(VALORES.keys())
+    random.shuffle(baralho)
+    return baralho[:3], baralho[3:6]
+
+# Função para determinar o vencedor da rodada
+def determinar_vencedor(carta_jogador, carta_maquina):
+    return 'Jogador' if VALORES[carta_jogador] > VALORES[carta_maquina] else 'Máquina' if VALORES[carta_maquina] > VALORES[carta_jogador] else 'Empate'
+
+# Função principal para controlar o jogo
+def jogar_truco():
+    jogador, maquina = preparar_jogo()
+    placar_jogador, placar_maquina = 0, 0
+    
+    for i in range(3):
+        vencedor = determinar_vencedor(jogador[i], maquina[i])
+        placar_jogador += (vencedor == 'Jogador')
+        placar_maquina += (vencedor == 'Máquina')
+    
+    print(f"Cartas do Jogador: {jogador}\nCartas da Máquina: {maquina}")
+    print(f"Jogador vence o jogo!" if placar_jogador > placar_maquina else "Máquina vence o jogo!" if placar_maquina > placar_jogador else "O jogo empatou!")
+
+# Executar o jogo
+jogar_truco()
