@@ -1,0 +1,45 @@
+import random
+
+def jogo_da_forca():
+    # Lista de palavras e suas dicas
+    palavras_e_dicas = {
+        'python': 'Uma linguagem de programação.',
+        'programacao': 'O ato de escrever código.',
+        'desenvolvimento': 'Processo de criação de software.',
+        'jogo': 'Atividade de entretenimento.',
+        'computador': 'Máquina eletrônica que processa dados.'
+    }
+    
+    # Escolhe uma palavra e sua dica aleatoriamente
+    palavra_secreta, dica = random.choice(list(palavras_e_dicas.items()))
+    letras_descobertas = ['_'] * len(palavra_secreta)
+    tentativas = 6
+
+    print("Bem-vindo ao Jogo da Forca!")
+    print(f"Dica: {dica}")
+    print(" ".join(letras_descobertas))
+    
+    while tentativas > 0 and '_' in letras_descobertas:
+        tentativa = input("Digite uma letra: ").lower()
+
+        if tentativa in letras_descobertas or tentativa in letras_descobertas:
+            print("Você já tentou essa letra.")
+            continue
+
+        if tentativa in palavra_secreta:
+            for i, letra in enumerate(palavra_secreta):
+                if letra == tentativa:
+                    letras_descobertas[i] = tentativa
+        else:
+            tentativas -= 1
+            print(f"Errou! Você tem {tentativas} tentativas restantes.")
+
+        print("Palavra: " + " ".join(letras_descobertas))
+    
+    if '_' not in letras_descobertas:
+        print("Parabéns! Você venceu! A palavra era " + palavra_secreta)
+    else:
+        print("Você perdeu! A palavra era " + palavra_secreta)
+
+# Executa o jogo
+jogo_da_forca()
