@@ -1,0 +1,130 @@
+import csv
+import os
+
+class Ativo:
+    def __init__(self, id, nome, descricao, categoria, status="Disponível"):
+        self.id = id
+        self.nome = nome
+        self.descricao = descricao
+        self.categoria = categoria
+        self.status = status
+
+    def __str__(self):
+        return f'Ativo {self.id}: {self.nome} ({self.categoria}) - {self.status}'
+
+    def to_list(self):
+        return [self.id, self.nome, self.descricao, self.categoria, self.status]
+
+class GerenciadorAtivos:
+    def __init__(self, arquivo):
+        self.ativos = []
+        self.arquivo = arquivo
+        self.carregar_ativos()
+
+    def carregar_ativos(self):
+        if os.path.exists(self.arquivo):
+            with open(self.arquivo, mode='r', newline='') as file:
+                reader = csv.reader(file)
+                next(reader)  # Pula o cabeçalho
+                for row in reader:
+                    if row:
+                        ativo = Ativo(int(row[0]), row[1], row[2], row[3], row[4])
+                        self.ativos.append(ativo)
+            print('Ativos carregados do arquivo.')
+        else:
+            with open(self.arquivo, mode='w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['ID', 'Nome', 'Descricao', 'Categoria', 'Status'])
+            print('Arquivo de ativos criado.')
+
+    def salvar_ativos(self):
+        with open(self.arquivo, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['ID', 'Nome', 'Descricao', 'Categoria', 'Status'])
+            for ativo in self.ativos:
+                writer.writerow(ativo.to_list())
+
+    def adicionar_ativo(self, ativo):
+        self.ativos.append(ativo)
+        self.salvar_ativos()
+        print(f'Ativo "{ativo.nome}" adicionado com ID {ativo.id}.')
+
+    def remover_ativo(self, id):
+        for ativo in self.ativos:
+            if ativo.id == id:
+                self.ativos.remove(ativo)
+                self.salvar_ativos()
+                print(f'Ativo {id} removido.')
+                return
+        print(f'Ativo {id} não encontrado.')
+
+    def listar_ativos(self):
+        if not self.ativos:
+            print('Nenhum ativo encontrado.')
+        else:
+            print('Lista de ativos:')
+            for ativo in self.ativos:
+                print(f' - {ativo}')
+
+    def procurar_ativo(self, id):
+        for ativo in self.ativos:
+            if ativo.id == id:
+                return ativo
+        print(f'Ativo {id} não encontrado.')
+        return None
+
+    def atualizar_ativo(self, id, nome=None, descricao=None, categoria=None, status=None):
+        ativo = self.procurar_ativo(id)
+        if ativo:
+            if nome:
+                ativo.nome = nome
+            if descricao:
+                ativo.descricao = descricao
+            if categoria:
+                ativo.categoria = categoria
+            if status:
+                ativo.status = status
+            self.salvar_ativos()
+            print(f'Ativo {id} atualizado.')
+        else:
+            print(f'Ativo {id} não encontrado.')
+
+def menu():
+    gerenciador = GerenciadorAtivos('ativos.csv')
+    while True:
+        print("\nMenu:")
+        print("1. Listar ativos")
+        print("2. Adicionar ativo")
+        print("3. Remover ativo")
+        print("4. Atualizar ativo")
+        print("5. Sair")
+
+        escolha = input("Escolha uma opção: ")
+
+        if escolha == '1':
+            gerenciador.listar_ativos()
+        elif escolha == '2':
+            id = int(input("ID do ativo: "))
+            nome = input("Nome do ativo: ")
+            descricao = input("Descrição do ativo: ")
+            categoria = input("Categoria do ativo: ")
+            status = input("Status do ativo: ")
+            ativo = Ativo(id, nome, descricao, categoria, status)
+            gerenciador.adicionar_ativo(ativo)
+        elif escolha == '3':
+            id = int(input("ID do ativo a ser removido: "))
+            gerenciador.remover_ativo(id)
+        elif escolha == '4':
+            id = int(input("ID do ativo a ser atualizado: "))
+            nome = input("Novo nome (deixe em branco para não alterar): ")
+            descricao = input("Nova descrição (deixe em branco para não alterar): ")
+            categoria = input("Nova categoria (deixe em branco para não alterar): ")
+            status = input("Novo status (deixe em branco para não alterar): ")
+            gerenciador.atualizar_ativo(id, nome, descricao, categoria, status)
+        elif escolha == '5':
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    menu()
