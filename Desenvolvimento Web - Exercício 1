@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Primeira Página HTML</title>
+</head>
+<body>
+
+    <h1>Minha Primeira Página HTML</h1>
+    <h2>Bem-vindo à minha página</h2>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <img src="https://i.pinimg.com/564x/65/7f/83/657f837b676386f8e50714cf6f7a7331.jpg" alt="Imagem Exemplo" />
+
+    <p><a href="https://br.pinterest.com/pin/198862139776267187/" target="_blank">Visite o site.com</a></p>
+
+</body>
+</html>
