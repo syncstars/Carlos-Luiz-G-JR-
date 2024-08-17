@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia Ideal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte da página */
+            margin: 0; /* Remove a margem padrão do navegador */
+            padding: 0; /* Remove o padding padrão do navegador */
+            background-color: #f4f4f4; /* Define uma cor de fundo suave */
+        }
+        header {
+            background: #333; /* Cor de fundo escura para o cabeçalho */
+            color: #fff; /* Cor do texto branca */
+            padding: 10px; /* Espaçamento interno */
+            text-align: center; /* Alinha o texto no centro */
+        }
+        h1 {
+            margin: 0; /* Remove a margem ao redor do título principal */
+        }
+        section {
+            padding: 20px; /* Espaçamento interno para as seções */
+            margin: 10px; /* Espaçamento externo entre as seções */
+            background: #fff; /* Fundo branco para destacar o conteúdo */
+            border-radius: 5px; /* Cantos arredondados */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        }
+        h2 {
+            margin-top: 0; /* Remove a margem no topo dos subtítulos */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dia Ideal</h1>
+    </header>
+
+    <section>
+        <h2>Manhã</h2>
+        <p>Eu gosto de começar o dia com um <strong>café da manhã</strong> saudável e nutritivo. Depois, gosto de dar uma caminhada ao ar livre para aproveitar o <em>ar fresco</em> da manhã.</p>
+        <p>É um momento ideal para me preparar mentalmente para o dia.</p>
+    </section>
+
+    <section>
+        <h2>Tarde</h2>
+        <p>Durante a tarde, eu costumo trabalhar em projetos que me interessam. Gosto de <strong>focar</strong> nas tarefas mais importantes e, se possível, fazer uma pausa para um <em>almoço leve</em> e revigorante.</p>
+        <p>Após o trabalho, é o momento perfeito para socializar ou praticar um hobby.</p>
+    </section>
+
+    <section>
+        <h2>Noite</h2>
+        <p>À noite, adoro relaxar com um bom livro ou assistir a um <strong>filme</strong>. Gosto de criar um ambiente tranquilo para terminar o dia com uma sensação de <em>conforto</em> e paz.</p>
+        <p>É o momento ideal para refletir sobre o dia e preparar-se para o dia seguinte.</p>
+    </section>
+</body>
+</html>
